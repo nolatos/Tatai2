@@ -18,7 +18,8 @@ public class EnterController {
 
     @FXML
     void enter(ActionEvent event) {
-
+        System.out.println("hi");
+        System.out.println("hi");
     }
 
 
