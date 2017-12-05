@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
+import tatai.Category;
 import tatai.Controller;
 
 import javafx.fxml.FXML;
@@ -13,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import tatai.Difficulty;
+import tatai.game.GameController;
 
 /**
  * Created by olive on 28/11/2017.
@@ -20,6 +23,7 @@ import javafx.scene.layout.Pane;
 public class WelcomeView  {
 
     private WelcomeController controller;
+    private Welcome model;
     private int state = 0;
 
     @FXML
@@ -138,6 +142,30 @@ public class WelcomeView  {
         this.levelPane.setVisible(false);
         this.buttonPane.setVisible(false);
         this.difficultyPane.setVisible(true);
+
+        //Setting up the category
+        Button button = (Button) event.getSource();
+        if (button.equals(this.arithmetic)) {
+            this.model.category = Category.ARITHMETIC;
+        }
+        else if (button.equals(this.equations)) {
+            this.model.category = Category.EQUATIONS;
+        }
+        else if (button.equals(this.word)) {
+            this.model.category = Category.WORD;
+        }
+        else if (button.equals(this.trig)) {
+            this.model.category = Category.TRIG;
+        }
+        else if (button.equals(this.algebra)) {
+            this.model.category = Category.ALGEBRA;
+        }
+        else if (button.equals(this.calculus)) {
+            this.model.category = Category.CALCULUS;
+        }
+        else {
+            this.model.category = Category.CUSTOM;
+        }
     }
 
     @FXML
@@ -164,7 +192,27 @@ public class WelcomeView  {
 
     @FXML
     void difficultyPressed(ActionEvent event) {
+        Button button = (Button) event.getSource();
+        if (button.equals(this.easy)) {
+            this.model.difficulty = Difficulty.EASY;
+        }
+        else if (button.equals(this.medium)) {
+            this.model.difficulty = Difficulty.MEDIUM;
+        }
+        else {
+            model.difficulty = Difficulty.HARD;
+        }
 
+        /**
+         * Playing the fade transition
+         */
+        this.playFadeTransition(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                controller.enterGame();
+                mainPane.setOpacity(1);
+            }
+        }, 1200, mainPane);
     }
 
     @FXML
@@ -172,6 +220,12 @@ public class WelcomeView  {
 
     }
 
+    /**
+     * Fades a scene away
+     * @param handler
+     * @param milliSeconds
+     * @param node
+     */
     void playFadeTransition(EventHandler<ActionEvent> handler, int milliSeconds, Node node) {
         FadeTransition ft = new FadeTransition(Duration.millis(milliSeconds), node);
 
@@ -185,6 +239,10 @@ public class WelcomeView  {
 
     void setController(WelcomeController controller) {
         this.controller = controller;
+    }
+
+    void setModel(Welcome welcome) {
+        this.model = welcome;
     }
 
     void playStartAnimation() {

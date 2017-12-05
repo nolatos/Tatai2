@@ -6,6 +6,7 @@ import javafx.scene.layout.Pane;
 import tatai.Category;
 import tatai.Controller;
 import tatai.Difficulty;
+import tatai.start.StartController;
 
 import java.io.IOException;
 
@@ -16,7 +17,7 @@ public class GameController extends Controller{
 
     private Game model;
     private GameView view;
-
+    private StartController startController;
     private Scene gameScene;
 
     /**
@@ -24,8 +25,18 @@ public class GameController extends Controller{
      * @param difficulty
      * @param category
      */
-    public GameController(Difficulty difficulty, Category category) {
-        model = new ArithmeticGame(difficulty, this);
+    public GameController(Difficulty difficulty, Category category, StartController startController) {
+
+        this.startController = startController;
+
+        //Setting up the model
+        switch (category) {
+            case ARITHMETIC:
+                this.model = new ArithmeticGame(difficulty, this);
+
+            default:
+                this.model = new ArithmeticGame(difficulty, this);
+        }
 
         try {
             //Loading fxml
@@ -47,5 +58,9 @@ public class GameController extends Controller{
     public void show() {
         mainStage.setScene(gameScene);
         showingPane = view.getMainPane();
+    }
+
+    void back() {
+        this.startController.show();
     }
 }

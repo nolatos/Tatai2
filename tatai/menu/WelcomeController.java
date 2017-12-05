@@ -9,7 +9,10 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import tatai.Category;
 import tatai.Controller;
+import tatai.Difficulty;
+import tatai.start.StartController;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -20,10 +23,12 @@ import java.util.Optional;
 public class WelcomeController extends Controller {
 
     private WelcomeView view;
+    private Welcome model;
 
     private Scene welcomeScene;
 
     private EnterController enterController;
+    private StartController startController;
 
 
 
@@ -71,6 +76,9 @@ public class WelcomeController extends Controller {
         }
 
 
+        //Setting up welcome model
+        model = new Welcome(this);
+        this.view.setModel(model);
     }
 
     @Override
@@ -104,5 +112,15 @@ public class WelcomeController extends Controller {
         catch (Exception ex) {
             System.exit(0);
         }
+    }
+
+    /**
+     * Starts a game
+     */
+    void enterGame() {
+        if (this.startController == null) {
+            startController = new StartController(model.category, model.difficulty, this);
+        }
+        startController.show();
     }
 }

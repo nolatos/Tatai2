@@ -18,6 +18,7 @@ public class EnterController {
 
     @FXML
     void enter(ActionEvent event) {
+        enterStage.close();
         WelcomeController welcomeController = new WelcomeController(this);
         welcomeController.start();
     }

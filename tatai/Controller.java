@@ -14,7 +14,7 @@ public abstract class Controller {
 
     protected static Pane showingPane; //The pane that is showing right now
 
-    protected static Stage mainStage;
+    protected static Stage mainStage = new Stage();
 
     /**
      * Changes the colour of the buttons to reverse text and background when mouse hovers over it
@@ -44,7 +44,7 @@ public abstract class Controller {
         }
     }
 
-    public abstract void show();
+    protected abstract void show();
 
 
 
