@@ -4,6 +4,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 /**
  * Created by olive on 28/11/2017.
@@ -12,6 +13,8 @@ public abstract class Controller {
 
 
     protected static Pane showingPane; //The pane that is showing right now
+
+    protected static Stage mainStage;
 
     /**
      * Changes the colour of the buttons to reverse text and background when mouse hovers over it

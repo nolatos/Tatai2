@@ -15,6 +15,8 @@ import javafx.scene.layout.Pane;
  * Created by olive on 6/12/2017.
  */
 public class GameView {
+
+
     @FXML
     private Button menu;
 
@@ -72,6 +74,12 @@ public class GameView {
     @FXML
     private Button ok;
 
+    private GameController controller;
+
+    void setController(GameController controller) {
+        this.controller = controller;
+    }
+
     @FXML
     void back(ActionEvent event) {
 
@@ -79,12 +87,12 @@ public class GameView {
 
     @FXML
     void changeColour(MouseEvent event) {
-
+        controller.changeColour(event);
     }
 
     @FXML
     void changeColourBack(MouseEvent event) {
-
+        controller.changeColourBack(event);
     }
 
     @FXML
@@ -110,5 +118,9 @@ public class GameView {
     @FXML
     void workingSeen(ActionEvent event) {
 
+    }
+
+    Pane getMainPane() {
+        return mainPane;
     }
 }

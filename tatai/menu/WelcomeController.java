@@ -27,9 +27,6 @@ public class WelcomeController extends Controller {
 
 
 
-
-    public final Stage MAIN_STAGE = new Stage();
-
     /**
      * Constructor loads the fxml, then plays the welcome animation
      * @param enterController
@@ -47,8 +44,8 @@ public class WelcomeController extends Controller {
             this.view.setController(this);
 
             //Setting up the stage
-            this.MAIN_STAGE.setResizable(false);
-            this.MAIN_STAGE.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            mainStage.setResizable(false);
+            mainStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(WindowEvent event) {
                     try {
@@ -82,7 +79,7 @@ public class WelcomeController extends Controller {
      */
     public void show() {
         showingPane = view.getMainPane();
-        this.MAIN_STAGE.setScene(this.welcomeScene);
+        mainStage.setScene(this.welcomeScene);
     }
 
     /**
@@ -90,8 +87,8 @@ public class WelcomeController extends Controller {
      */
     void start() {
         this.show();
-        this.MAIN_STAGE.sizeToScene();
-        this.MAIN_STAGE.show();
+        mainStage.sizeToScene();
+        mainStage.show();
         this.view.playStartAnimation();
     }
 
