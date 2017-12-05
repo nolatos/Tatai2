@@ -17,6 +17,7 @@ public class Main extends Application {
         launch(Main.class, args);
     }
 
+
     @Override
     public void start(Stage stage) {
 
@@ -28,6 +29,7 @@ public class Main extends Application {
 
             stage.setScene(new Scene(pane));
             stage.setResizable(false);
+            stage.sizeToScene();
             stage.show();
         }
         catch (IOException ioex) {
@@ -36,5 +38,6 @@ public class Main extends Application {
 
 
     }
+
 
 }

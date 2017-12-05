@@ -18,13 +18,22 @@ public class EnterController {
 
     @FXML
     void enter(ActionEvent event) {
-        System.out.println("hi");
-        System.out.println("hi");
+        WelcomeController welcomeController = new WelcomeController(this);
+        welcomeController.start();
     }
 
 
     public void setEnterStage(Stage stage) {
         this.enterStage = stage;
+    }
+
+    /**
+     * Shows the enter scene
+     * @param stage
+     */
+    public void show(Stage stage) {
+        stage.close();
+        this.enterStage.show();
     }
 
 }
