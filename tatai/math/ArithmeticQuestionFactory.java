@@ -37,6 +37,7 @@ public class ArithmeticQuestionFactory implements QuestionFactory {
                     int number2 = number1 + answer;
                     str = "" + number2 + " " + SUBTRACTION_SYMBOL + " " + number1;
                 }
+                break;
             case MEDIUM:
                 if (probability < 0.25) {
                     //Addition
@@ -80,6 +81,7 @@ public class ArithmeticQuestionFactory implements QuestionFactory {
                     int number2 = number1 * answer;
                     str = "" + number2 + " " + DIVISION_SYMBOL + " " + number1;
                 }
+                break;
             default:
                 answer = 3;
                 str = "hi";

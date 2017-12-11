@@ -10,5 +10,10 @@ public class ArithmeticQuestion extends Question {
     public ArithmeticQuestion(String expression, int answer) {
         super(answer);
         this.expression = expression;
+
+    }
+
+    public String getExpression() {
+        return expression;
     }
 }

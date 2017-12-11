@@ -61,7 +61,7 @@ public class StartController extends Controller {
     }
 
     void startGame() {
-        GameController gameController = new GameController(model.getDifficulty(), model.getCategory());
+        GameController gameController = new GameController(model.getDifficulty(), model.getCategory(), this);
         gameController.show();
     }
 }

@@ -53,7 +53,7 @@ public class StartView {
 
     @FXML
     void startGame(ActionEvent event) {
-
+        this.controller.startGame();
     }
 
     /**

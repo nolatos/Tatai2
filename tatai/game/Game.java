@@ -1,6 +1,9 @@
 package tatai.game;
 
 import tatai.Difficulty;
+import tatai.math.Question;
+
+import java.util.List;
 
 /**
  * Created by olive on 4/12/2017.
@@ -8,10 +11,19 @@ import tatai.Difficulty;
 public abstract class Game {
 
     private Difficulty difficulty;
-    private GameController controller;
+    protected GameController controller;
+    protected int progress = 0;
+    protected List<Question> questionList;
 
     Game(Difficulty difficulty, GameController controller) {
         this.difficulty = difficulty;
         this.controller = controller;
     }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    abstract void nextQuestion();
+
 }

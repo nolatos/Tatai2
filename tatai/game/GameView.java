@@ -7,9 +7,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+
+import java.net.URL;
 
 /**
  * Created by olive on 6/12/2017.
@@ -122,5 +125,18 @@ public class GameView {
 
     Pane getMainPane() {
         return mainPane;
+    }
+
+
+    void displayQuestion(String string) {
+        numberLabel.setText(string);
+        numberLabel.setVisible(true);
+        questionImage.setVisible(false);
+    }
+
+    void displayQuestion(URL url) {
+        questionImage.setImage(new Image(url.toString()));
+        questionImage.setVisible(true);
+        numberLabel.setVisible(false);
     }
 }

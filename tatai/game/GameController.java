@@ -9,6 +9,7 @@ import tatai.Difficulty;
 import tatai.start.StartController;
 
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * Created by olive on 6/12/2017.
@@ -29,15 +30,6 @@ public class GameController extends Controller{
 
         this.startController = startController;
 
-        //Setting up the model
-        switch (category) {
-            case ARITHMETIC:
-                this.model = new ArithmeticGame(difficulty, this);
-
-            default:
-                this.model = new ArithmeticGame(difficulty, this);
-        }
-
         try {
             //Loading fxml
             FXMLLoader loader = new FXMLLoader(getClass().getResource("play.fxml"));
@@ -52,6 +44,19 @@ public class GameController extends Controller{
             ioex.printStackTrace();
         }
 
+        //Setting up the model
+        switch (category) {
+            case ARITHMETIC:
+                this.model = new ArithmeticGame(difficulty, this);
+                break;
+            default:
+                this.model = new ArithmeticGame(difficulty, this);
+        }
+
+
+
+
+
     }
 
     @Override
@@ -60,7 +65,19 @@ public class GameController extends Controller{
         showingPane = view.getMainPane();
     }
 
+    /**
+     * Displays the startController
+     */
     void back() {
         this.startController.show();
     }
+
+    void displayQuestion(String string) {
+        view.displayQuestion(string);
+    }
+
+    void displayQuestion(URL url) {
+        view.displayQuestion(url);
+    }
+
 }
