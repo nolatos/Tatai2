@@ -33,7 +33,19 @@ public class ArithmeticGame extends Game{
     @Override
     void nextQuestion() {
         ArithmeticQuestion arithmeticQuestion = (ArithmeticQuestion) questionList.get(progress);
-//        System.out.println(arithmeticQuestion.getExpression());
         controller.displayQuestion(arithmeticQuestion.getExpression());
     }
+
+    @Override
+    void advance() {
+        super.advance();
+        nextQuestion();
+    }
+
+    @Override
+    boolean checkCorrect() {
+        return questionList.get(progress).checkCorrect();
+    }
+
+
 }

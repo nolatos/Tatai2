@@ -20,10 +20,28 @@ public abstract class Game {
         this.controller = controller;
     }
 
-    public Difficulty getDifficulty() {
+    Difficulty getDifficulty() {
         return difficulty;
     }
 
+    void advance() {
+        progress++;
+    }
+
     abstract void nextQuestion();
+
+    abstract boolean checkCorrect();
+
+    int getAnswer() {
+        return questionList.get(progress).getAnswer();
+    }
+
+    /**
+     * Sets the recognised value
+     * @param i
+     */
+    void setRecognised(int i) {
+        questionList.get(progress).setRecognised(i);
+    }
 
 }

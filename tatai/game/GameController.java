@@ -39,6 +39,7 @@ public class GameController extends Controller{
             //Setting up view
             view = loader.getController();
             view.setController(this);
+
         }
         catch (IOException ioex) {
             ioex.printStackTrace();
@@ -53,8 +54,7 @@ public class GameController extends Controller{
                 this.model = new ArithmeticGame(difficulty, this);
         }
 
-
-
+        view.setModel(model);
 
 
     }
